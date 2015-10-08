@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="mainModule">
+<head>
+    <!-- Use the 'title' property to render a page title  -->
+    <title><%= title %></title>
+</head>
+<body>
+
+    <div ng-controller="taskCtrl">
+        {{title}}
+    </div>
+
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="application.js"></script>
+<script type="text/javascript" src="tasks/tasks.client.module.js"></script>
+<script type="text/javascript" src="tasks/controllers/tasks.client.controller.js"></script>
+</body>
+</html>

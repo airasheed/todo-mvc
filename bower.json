@@ -1,0 +1,8 @@
+{
+  "name": "todo-mvc",
+  "version": "1.0.0",
+  "dependencies" : {
+    "angular" : "~1.4.7",
+    "ui-router" : "~0.2.15"
+  }
+}
