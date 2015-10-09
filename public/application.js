@@ -1,1 +1,7 @@
-angular.module('mainModule', ['ui.router', 'tasks']);
+var todoApp = angular.module('mainModule', ['tasks','ui.router']);
+
+todoApp.config(function($stateProvider, $urlRouterProvider){
+
+    $urlRouterProvider.otherwise('/task');
+
+});

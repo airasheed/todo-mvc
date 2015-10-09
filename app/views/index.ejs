@@ -3,17 +3,65 @@
 <head>
     <!-- Use the 'title' property to render a page title  -->
     <title><%= title %></title>
+
+    <!--Bootstrap Core Css-->
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+
+    <!--Custom CSS-->
+    <link href="css/todo.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
 </head>
 <body>
+    <div id="wrapper">
 
-    <div ng-controller="taskCtrl">
-        {{title}}
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Todo MVC
+                </a>
+            </li>
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Shortcuts</a>
+            </li>
+            <li>
+                <a href="#">Overview</a>
+            </li>
+        </ul>
     </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+           <div ui-view></div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
 
 <script type="text/javascript" src="lib/angular/angular.js"></script>
 <script type="text/javascript" src="lib/ui-router/release/angular-ui-router.js"></script>
+    <!--load the tasks module-->
+    <script type="text/javascript" src="tasks/tasks.client.module.js"></script>
+    <script type="text/javascript" src="tasks/controllers/tasks.client.controller.js"></script>
 <script type="text/javascript" src="application.js"></script>
-<script type="text/javascript" src="tasks/tasks.client.module.js"></script>
-<script type="text/javascript" src="tasks/controllers/tasks.client.controller.js"></script>
+
 </body>
 </html>
