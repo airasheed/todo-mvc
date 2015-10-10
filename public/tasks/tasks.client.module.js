@@ -6,7 +6,8 @@ angular.module('tasks', ['ui.router'])
         $stateProvider
             .state('task', {
                 url: '/task',
-                templateUrl: 'tasks/views/tasks.client.view.html'
+                templateUrl: 'tasks/views/tasks.client.view.html',
+                controller: 'taskCtrl'
             });
 
     }).controller('taskCtrl', function($scope, $http) {
