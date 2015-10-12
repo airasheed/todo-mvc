@@ -10,6 +10,10 @@ exports.getTask = function(req,res,next,taskId) {
         return next();
     });
 };
+/*Get Individual Task*/
+exports.get = function(req,res,next) {
+    res.json(req.task);
+};
 
 exports.list = function(req,res,next) {
 
@@ -41,7 +45,7 @@ exports.add  = function(req, res, next) {
         if (!task) return next(new Error('Failed to save'));
         console.info('Added %s with id=%s', task.name, task.id);
 
-        res.redirect('/tasks');
+        res.json(task);
     });
 };
 
@@ -62,30 +66,23 @@ exports.markAllCompleted = function(req,res,next) {
 };
 
 exports.completed = function(req,res,next) {
+    console.log(req.body);
     req.db.tasks.find({
         completed: true
     }).toArray(function (error, tasks) {
-        res.render('tasks_completed', {
-            title: 'completed',
-            tasks: tasks || []
-        });
+        res.json(tasks || []);
     });
 };
 
-exports.markCompleted = function(req,res,next) {
-    if(!req.body.completed) {
-        return next(new Error('Param is missing.'));
-    }
-    req.db.tasks.updateById(req.task._id, {
-        $set: {completed: req.body.completed === 'true'}
-    }, function(error,count) {
+exports.markCompleted = function(req, res, next) {
+    //if (!req.body.completed) return next(new Error('Param is missing.'));
+    var completed = req.body.completed === 'true';
+    req.db.tasks.updateById(req.task._id, {$set: {completeTime: completed ? new Date() : null, completed: completed}}, function(error, count) {
         if (error) return next(error);
-        if(count !=1) {
-            return next(new Error('Something went wrong.'));
-        }
-        console.info('Marked task %s with id=%s completed', req.task.name, req,task._id);
+        if (count !==1) return next(new Error('Something went wrong.'));
+        console.info('Marked task %s with id=%s completed.', req.task.name, req.task._id);
         res.redirect('/tasks');
-    });
+    })
 };
 
 exports.del = function(req,res,next) {

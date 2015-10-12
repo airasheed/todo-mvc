@@ -16,19 +16,23 @@
         <section class="list-holder">
             <div class="input-group list-item" ng-repeat="task in tasks">
                 <span class="input-group-addon">
-                    <input type="checkbox" aria-label="...">
+                    <input type="checkbox" aria-label="..." ng-change="markCompleted(task)" ng-model="task.completed">
                 </span>
                 <div type="text" class="form-control" aria-label="...">
                     {{task.name}}
                 </div>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="deleteTask(task._id)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </span>
             </div><!-- /input-group -->
         </section>
     </div>
     <div class="col-md-4 box-holder">
         <h2>Completed</h2>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+        <li ng-repeat="cItem in cItems">
+            {{cItem.name}}
+        </li>
     </div>
 </div>
