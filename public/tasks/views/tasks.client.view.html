@@ -4,9 +4,9 @@
         <header id="header">
             <form id="todo-form">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="What Needs to be done?">
+                    <input type="text" class="form-control" placeholder="What Needs to be done?" ng-model="task.name">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
+                        <button class="btn btn-default" type="button" ng-click="addTask(task)">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>
                     </span>
@@ -14,7 +14,7 @@
             </form>
         </header>
         <section class="list-holder">
-            <div class="input-group list-item" ng-repeat="task in tasks">
+            <div class="input-group list-item" ng-repeat="task in tasks | filter: {completed:false} track by $index">
                 <span class="input-group-addon">
                     <input type="checkbox" aria-label="..." ng-change="markCompleted(task)" ng-model="task.completed">
                 </span>
@@ -22,7 +22,7 @@
                     {{task.name}}
                 </div>
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="deleteTask(task._id)">
+                    <button class="btn btn-default" type="button" ng-click="deleteTask(task,$index)">
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </span>
@@ -31,8 +31,8 @@
     </div>
     <div class="col-md-4 box-holder">
         <h2>Completed</h2>
-        <li ng-repeat="cItem in cItems">
-            {{cItem.name}}
+        <li ng-repeat="task in tasks | filter: {completed:true}">
+            {{task.name}}
         </li>
     </div>
 </div>

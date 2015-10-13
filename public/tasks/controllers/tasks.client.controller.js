@@ -8,6 +8,7 @@ angular.module('tasks')
             $scope.tasks = response.data;
         });
 
+
         tasks.getCompleted
             .then(function (response) {
                 $scope.cItems = response.data;
@@ -16,8 +17,9 @@ angular.module('tasks')
                 console.log(error);
             });
 
+
+
         $scope.markCompleted = function(taskId) {
-            console.log(taskId);
             tasks.markCompleted(taskId);
         };
 
@@ -25,18 +27,19 @@ angular.module('tasks')
 
         };
 
-        $scope.deleteTask = function(taskId) {
-            console.log(taskId);
-            //tasks.del(taskId);
+        $scope.deleteTask = function(task,$index) {
+            console.log(task, $index);
+            $scope.tasks.splice($index, 1);
+            tasks.del(task._id);
         };
 
-        $scope.addTask = function() {
-            tasks.add(tasks);
+        $scope.addTask = function(task) {
+            if(!task || task.name == '') {
+                console.log("no tasks added");
+                return;
+            }
+            tasks.add(task);
         };
 
-     /*   $http.get('/tasks')
-            .then(function (response) {
-                $scope.tasks = response.data;
-            });*/
     });
 

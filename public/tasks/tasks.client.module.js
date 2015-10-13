@@ -4,8 +4,8 @@ angular.module('tasks', ['ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
-            .state('task', {
-                url: '/task',
+            .state('tasks', {
+                url: '/tasks',
                 templateUrl: 'tasks/views/tasks.client.view.html',
                 controller: 'taskCtrl'
             });
