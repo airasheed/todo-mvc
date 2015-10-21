@@ -2,6 +2,7 @@ var mongoskin = require('mongoskin'),
     config = require('./config');
 
 module.exports = function(app) {
+    console.log(config.db);
     var db = mongoskin.db(config.db, {safe: true});
 
     app.use(function(req, res, next) {
