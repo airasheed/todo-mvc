@@ -12,7 +12,6 @@ var app = express();
 
 //Log the server status to the console
 app.listen(3000, function() {
-    console.log(process.env.MONGOLAB_URI);
     console.log('Server running at http://localhost:3000');
 });
 
