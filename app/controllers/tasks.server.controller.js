@@ -76,7 +76,6 @@ exports.markCompleted = function(req, res, next) {
 /*    //if (!req.body.completed) return next(new Error('Param is missing.'));
     var completed = req.body.completed === 'true';*/
     req.db.tasks.updateById(req.task._id, {$set: {completed: true}}, function(error, count) {
-        console.log(count);
         if (error) return next(error);
         if (count !==1) return next(new Error('Something went wrong.'));
         console.info('Marked task %s with id=%s completed.', req.task.name, req.task._id);

@@ -90,6 +90,9 @@
     background: none;
 }
 
+.box-holder.completed-container{
+    box-shadow:none;
+}
 
 .box-holder {
     border: 1px solid #e6e6e6;
@@ -109,6 +112,26 @@
     border-radius: 0px;
     border-color: #f8f8f8;
 }
+
+.completed-task-item span {
+    border: 0;
+}
+.completed-task-item .btn {
+    border: 0;
+}
+
+.completed-task-item .btn:hover {
+    border: 0;
+    background-color: transparent;
+}
+
+.completed-task-item .glyphicon-repeat:before {
+    color: #d3d3d3;
+}
+.completed-task-item .glyphicon-remove:before {
+    color: #e74c3c;
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;

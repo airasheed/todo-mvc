@@ -29,10 +29,22 @@
             </div><!-- /input-group -->
         </section>
     </div>
-    <div class="col-md-4 box-holder">
+    <div class="col-md-4 box-holder completed-container">
         <h2>Completed</h2>
-        <li ng-repeat="task in tasks | filter: {completed:true}">
-            {{task.name}}
+        <li ng-repeat="task in tasks | filter: {completed:true}" class="input-group completed-task-item">
+            <span typeof="text" class="form-control complete-task-name">
+                {{task.name}}
+            </span>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <span class="glyphicon glyphicon-repeat"></span>
+                </button>
+            </span>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="deleteTask(task,$index)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </span>
         </li>
     </div>
 </div>
